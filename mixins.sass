@@ -1,0 +1,125 @@
+/* box-sizing reset */
+*, *:before, *:after
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+
+/* iPhone fix */
+body
+	-webkit-text-size-adjust: none
+
+/* increases click-area for text links */
+a
+	position: relative
+	padding: .5em
+	margin: -.5em
+
+///* MIXINS *///
+
+@mixin border-radius($radius) 
+	-ms-border-radius: $radius
+	-webkit-border-radius: $radius
+	-o-border-radius: $radius
+	-moz-border-radius: $radius
+	border-radius: $radius
+
+@mixin placement($type, $top, $right, $bottom, $left) 
+	position: $type
+	top: $top
+	right: $right
+	bottom: $bottom
+	left: $left
+
+@mixin transform($string) 
+	-webkit-transform:  $string
+	-moz-transform:     $string
+	-ms-transform:      $string
+	-o-transform:       $string
+	transform:          $string
+
+@mixin rotate($deg)
+	-webkit-transform:  rotate($deg)
+	-moz-transform:     rotate($deg)
+	-ms-transform:      rotate($deg)
+	-o-transform:       rotate($deg)
+	transform:          rotate($deg)
+
+@mixin scale($factor)
+	-webkit-transform:  scale($factor)
+	-moz-transform:     scale($factor)
+	-ms-transform:      scale($factor)
+	-o-transform:       scale($factor)
+	transform:          scale($factor)
+ 
+@mixin translate ($x, $y) 
+	-webkit-transform:  translate($x, $y)
+	-moz-transform:     translate($x, $y)
+	-ms-transform:      translate($x, $y)
+	-o-transform:       translate($x, $y)
+	transform:          translate($x, $y)
+
+@mixin background-clip
+	background-clip: padding-box
+
+@mixin transition($string: all 0.5s)
+	-webkit-transition: $string
+	-moz-transition:    $string
+	-ms-transition:     $string
+	-o-transition:      $string
+	transition:         $string
+
+@mixin linear-gradient($fromColor, $toColor)
+	background-color: $toColor /* Fallback Color */
+	background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor)) /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, $fromColor, $toColor) /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(top, $fromColor, $toColor) /* FF3.6 */
+	background-image:     -ms-linear-gradient(top, $fromColor, $toColor) /* IE10 */
+	background-image:      -o-linear-gradient(top, $fromColor, $toColor) /* Opera 11.10+ */
+	background-image:         linear-gradient(top, $fromColor, $toColor)
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}')
+
+@mixin box-shadow($top, $left, $blur, $color, $inset:"")
+	-webkit-box-shadow: $top $left $blur $color #{$inset}
+	-moz-box-shadow: $top $left $blur $color #{$inset}
+	box-shadow: $top $left $blur $color #{$inset}
+
+@mixin opacity($opacity)
+	opacity: $opacity
+	$opacity-ie: $opacity * 100
+	filter: alpha(opacity=$opacity-ie) //IE8
+
+/* media queries */
+@mixin phone
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-device-pixel-ratio: 2)
+	@include phone
+
+@media screen and (max-width: 640px)
+	@include phone
+
+/* shorthand classes */
+.float-left
+	float: left
+
+.float-right
+	float: right
+
+.clear
+	clear: both
+
+.hide
+	display: none
+
+.show
+	display: box
+
+.clearfix:before, .clearfix:after 
+	content: " "
+	display: table
+ 
+.clearfix:after
+	clear: both
+ 
+/* IE6/7 support */
+.clearfix
+	*zoom: 1
