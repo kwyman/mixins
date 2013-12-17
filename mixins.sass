@@ -1,12 +1,8 @@
-/* box-sizing reset */
+/* box-sizing reset - credit to Paul Irish */
 *, *:before, *:after
 	-webkit-box-sizing: border-box
 	-moz-box-sizing: border-box
 	box-sizing: border-box
-
-/* iPhone fix */
-body
-	-webkit-text-size-adjust: none
 
 /* increases click-area for text links */
 a
@@ -96,30 +92,3 @@ a
 
 @media screen and (max-width: 640px)
 	@include phone
-
-/* shorthand classes */
-.float-left
-	float: left
-
-.float-right
-	float: right
-
-.clear
-	clear: both
-
-.hide
-	display: none
-
-.show
-	display: box
-
-.clearfix:before, .clearfix:after 
-	content: " "
-	display: table
- 
-.clearfix:after
-	clear: both
- 
-/* IE6/7 support */
-.clearfix
-	*zoom: 1
